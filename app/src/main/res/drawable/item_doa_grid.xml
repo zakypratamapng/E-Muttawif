@@ -1,0 +1,9 @@
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/buttonDoa"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:backgroundTint="@color/blue"
+    android:textColor="@android:color/white"
+    android:padding="10dp"
+    android:gravity="center"
+    android:textSize="16sp"/>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "710027588169",
+    "firebase_url": "https://muttawif-data-default-rtdb.firebaseio.com",
+    "project_id": "muttawif-data",
+    "storage_bucket": "muttawif-data.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710027588169:android:96cdc23269f4714f9d4598",
+        "android_client_info": {
+          "package_name": "com.example.muttawif"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710027588169-7iqb2tudm29hvqtjrp27okpj8m1d2rod.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.muttawif",
+            "certificate_hash": "52035467b7c34edac30ef42af975935c41d93d04"
+          }
+        },
+        {
+          "client_id": "710027588169-vfmkm9h1qo2s6jvl78bnst3hccv19vuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD68BmrpvpvBjHOvN1L4J-hTQ24RjHe5pI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710027588169-vfmkm9h1qo2s6jvl78bnst3hccv19vuu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
