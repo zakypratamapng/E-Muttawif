@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/backgroundmuttowif"
         android:scaleType="centerCrop"
-        android:alpha="0.2"/>
+        android:alpha="0.2" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,21 +18,35 @@
         android:padding="20dp">
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/editEmail"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp"
             android:padding="10dp" />
 
-        <EditText
-            android:id="@+id/editTextPassword"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="67dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="10dp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="60dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="10dp" />
+
+            <ImageView
+                android:id="@+id/passwordToggle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_visibility_off"
+                android:padding="10dp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/buttonLogin"
@@ -44,22 +58,22 @@
             android:padding="10dp" />
 
         <Button
-            android:id="@+id/buttonGoogleSignIn"
+            android:id="@+id/buttonGoogleLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/red"
-            android:padding="10dp"
             android:text="Login dengan Google"
-            android:textColor="@android:color/white" />
+            android:backgroundTint="@color/red"
+            android:textColor="@android:color/white"
+            android:padding="10dp" />
 
         <Button
-            android:id="@+id/buttonSignup"
+            android:id="@+id/buttonGotoSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/green"
-            android:padding="10dp"
-            android:text="Buat Akun"
-            android:textColor="@android:color/white" />
+            android:text="Buat Akun Baru"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp" />
 
         <ProgressBar
             android:id="@+id/progressBar"

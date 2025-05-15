@@ -1,145 +1,245 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="#F5F5F5">
 
-    <!-- Layout Horizontal untuk Tombol Kembali & Judul "RUKUN HAJI" -->
-    <LinearLayout
-        android:id="@+id/headerLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        tools:ignore="ExtraText">
-
-        <!-- Tombol Kembali Kecil -->
-        <!-- Ganti dengan ikon panah -->
-
-        <!-- Judul "RUKUN HAJI" -->
-        <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RUKUN HAJI"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#000000"/>
-    </LinearLayout>
-
-    <!-- ScrollView untuk Tombol Doa -->
-    <ScrollView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/headerLayout"
-        android:layout_marginTop="20dp">
+        android:contentDescription="Background aplikasi"
+        android:scaleType="centerCrop"
+        android:alpha="0.4"
+        android:src="@drawable/backgroundmuttowif" />
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <!-- Tombol Back -->
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_logout"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Tombol kembali"
+            android:layout_gravity="start"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Header dengan tombol back -->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_marginBottom="16dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#6200EE"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Dzikir dan Doa"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- Grid Menu Doa -->
+        <GridLayout
+            android:id="@+id/gridDoa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:columnCount="2"
+            android:useDefaultMargins="true"
+            android:alignmentMode="alignMargins"
+            android:rowOrderPreserved="false">
+
+            <!-- Contoh Menu (buat semua tombol di sini) -->
             <Button
                 android:id="@+id/buttonNiatHaji"
-                style="@style/DoaButton"
-                android:text="Niat Haji" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/niat_haji"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonNiatHajiQiran"
-                style="@style/DoaButton"
-                android:text="Niat Haji Qiran" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Niat Haji Qiran"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaSelesaiIhram"
-                style="@style/DoaButton"
-                android:text="Doa Selesai Berihram" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Selesai Ihram"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaTalbiyah"
-                style="@style/DoaButton"
-                android:text="Doa Talbiyah" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Talbiyah"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaMasukMakkah"
-                style="@style/DoaButton"
-                android:text="Doa Memasuki Kota Makkah" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Masuk Makkah"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaMasjidilHaram"
-                style="@style/DoaButton"
-                android:text="Doa Masuk Masjidil Haram" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Masjidil Haram"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaLihatKaabah"
-                style="@style/DoaButton"
-                android:text="Doa Ketika Melihat Ka'bah" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Lihat Ka'bah"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaTawaf"
-                style="@style/DoaButton"
-                android:text="Doa Tawaf" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Tawaf"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaSai"
-                style="@style/DoaButton"
-                android:text="Doa Sa'i" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Sa'i"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaGuntingRambut"
-                style="@style/DoaButton"
-                android:text="Doa Menggunting Rambut" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Gunting Rambut"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaMasukArafah"
-                style="@style/DoaButton"
-                android:text="Doa Ketika Masuk Arafah" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Masuk Arafah"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaWukuf"
-                style="@style/DoaButton"
-                android:text="Doa Wukuf" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Wukuf"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaSampaiMuzdalifah"
-                style="@style/DoaButton"
-                android:text="Doa Ketika Sampai di Muzdalifah" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Sampai Muzdalifah"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaSampaiMina"
-                style="@style/DoaButton"
-                android:text="Doa Ketika Sampai di Mina" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Sampai Mina"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaLemparJumrah"
-                style="@style/DoaButton"
-                android:text="Doa Lempar Jumrah" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Lempar Jumrah"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaMasukMadinah"
-                style="@style/DoaButton"
-                android:text="Doa Masuk Kota Madinah" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Masuk Madinah"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaMasukMasjidNabawi"
-                style="@style/DoaButton"
-                android:text="Doa Masuk Masjid Nabawi" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Masjid Nabawi"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
             <Button
                 android:id="@+id/buttonDoaPulangHaji"
-                style="@style/DoaButton"
-                android:text="Doa Ketika Pulang Haji" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Doa Pulang Haji"
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:layout_margin="4dp" />
 
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/ic_arrow_back"
-        tools:ignore="SpeakableTextPresentCheck" />
-</RelativeLayout>
+        </GridLayout>
+    </LinearLayout>
+</FrameLayout>

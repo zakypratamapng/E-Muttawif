@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="menuPersiapanHaji" type="id" />
+    <item name="menuFiqihUmrah" type="id" />
+    <item name="menuFiqihHaji" type="id" />
+    <item name="menuDzikirDoa" type="id" />
+    <item name="menuTataUmroh" type="id" />
+    <item name="menuTataHaji" type="id" />
+    <item name="menuGrid" type="id" />
+</resources>

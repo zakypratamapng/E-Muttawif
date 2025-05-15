@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.muttawif"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.muttawif"
@@ -42,15 +42,31 @@ dependencies {
     implementation(libs.play.services.location)
     implementation(libs.exoplayer)
 
-    // Firebase Authentication & Firestore
-    implementation("com.google.firebase:firebase-auth:23.1.0")
-    implementation("com.google.firebase:firebase-firestore:25.1.1")
-    implementation ("com.google.firebase:firebase-auth:21.0.1")
-    implementation ("com.google.android.gms:play-services-auth:20.5.0")
+    implementation (libs.ummalqura.calendar)
 
+    // Firebase Authentication & Firestore
+    implementation(libs.firebase.auth)
+    implementation (libs.google.firebase.auth)
+    implementation (libs.google.firebase.database)
+    implementation (libs.google.firebase.storage)
+    implementation (libs.play.services.auth.v2050)
+        // AndroidX
+        implementation (libs.appcompat.v161)
+        implementation (libs.material.v190)
+        implementation (libs.constraintlayout)
+
+        // Other dependencies you might need
+        implementation (libs.lifecycle.livedata.ktx)
+        implementation (libs.lifecycle.viewmodel.ktx)
+
+        implementation ("com.google.android.gms:play-services-auth:21.0.0") // versi terbaru
+        implementation ("com.google.android.gms:play-services-identity:18.0.1")
 
     // Google Sign-In
-    implementation("com.google.android.gms:play-services-auth:21.3.0")
+    implementation(libs.gms.play.services.auth)
+    implementation(libs.credentials)
+    implementation(libs.credentials.play.services.auth)
+    implementation(libs.googleid)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

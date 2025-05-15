@@ -36,7 +36,8 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:paddingBottom="4dp" />
+        android:paddingBottom="4dp"
+            tools:ignore="HardcodedText" />
 
     <!-- Talbiyah (Arab) -->
     <TextView
@@ -47,7 +48,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:paddingBottom="4dp" />
+        android:paddingBottom="4dp"
+        tools:ignore="HardcodedText" />
 
     <!-- Terjemahan Talbiyah -->
     <TextView
@@ -57,7 +59,8 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:gravity="center"
-        android:paddingBottom="20dp" />
+        android:paddingBottom="20dp"
+        tools:ignore="HardcodedText" />
 
     <!-- Judul Pemilihan Referensi Doa -->
     <TextView
@@ -68,7 +71,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:paddingBottom="20dp" />
+        android:paddingBottom="20dp"
+        tools:ignore="HardcodedText" />
 
     <!-- Tombol Muhammadiyah -->
     <Button
@@ -79,7 +83,8 @@
         android:layout_marginTop="10dp"
         android:padding="10dp"
         android:text="Muhammadiyah"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        tools:ignore="HardcodedText" />
 
     <!-- Tombol Nahdlatul Ulama -->
     <Button
@@ -90,7 +95,8 @@
         android:layout_marginTop="10dp"
         android:padding="10dp"
         android:text="Nahdlatul Ulama (NU)"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        tools:ignore="HardcodedText" />
 
         <ImageButton
             android:id="@+id/buttonLogout"

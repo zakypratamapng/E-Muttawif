@@ -1,128 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Background Image -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/backgroundmuttowif"
         android:scaleType="centerCrop"
-        android:alpha="0.2"/>
+        android:alpha="0.2"
+        tools:ignore="ContentDescription" />
 
-    <ScrollView
+    <!-- Konten Form -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/daftar_akun"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:paddingBottom="20dp" />
+
+        <EditText
+            android:id="@+id/editNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama"
+            android:importantForAutofill="no"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="HardcodedText,TextFields" />
+
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="Autofill,HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="20dp">
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Daftar Akun"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:paddingBottom="20dp"/>
-
-            <!-- Input Nama -->
-            <EditText
-                android:id="@+id/editNama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nama"
-                android:minHeight="48dp"
-                android:padding="10dp" />
-
-            <!-- Input Email -->
-            <EditText
-                android:id="@+id/editEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:padding="10dp" />
-
-            <!-- Input Password -->
             <EditText
                 android:id="@+id/editPassword"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
-                android:padding="10dp" />
-
-            <!-- Input No Telepon -->
-            <EditText
-                android:id="@+id/editNoTelepon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="No Telepon"
-                android:inputType="phone"
-                android:minHeight="48dp"
-                android:padding="10dp" />
-
-            <!-- Input Alamat -->
-            <EditText
-                android:id="@+id/editAlamat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Alamat"
-                android:inputType="textPostalAddress"
-                android:minHeight="48dp"
-                android:padding="10dp" />
-
-            <!-- Input No Rombongan -->
-            <EditText
-                android:id="@+id/editNoRombongan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="No Rombongan Jamaah"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:padding="10dp" />
-
-            <!-- Tombol Daftar -->
-            <Button
-                android:id="@+id/buttonSignup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Daftar"
                 android:padding="10dp"
-                android:backgroundTint="@color/blue"
-                android:textColor="@android:color/white"
-                android:layout_marginTop="10dp"/>
+                tools:ignore="Autofill,HardcodedText" />
 
-            <!-- Tombol Google SignUp -->
-            <Button
-                android:id="@+id/buttonGoogleSignup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/red"
-                android:layout_marginTop="10dp"
+            <ImageView
+                android:id="@+id/passwordToggle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:padding="10dp"
-                android:text="Daftar dengan Google"
-                android:textColor="@android:color/white" />
-
-            <!-- Tombol Kembali -->
-            <Button
-                android:id="@+id/buttonKembali"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Kembali"
-                android:padding="10dp"
-                android:backgroundTint="@color/gray"
-                android:textColor="@android:color/white"
-                android:layout_marginTop="10dp"/>
+                android:src="@drawable/ic_visibility_off"
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
         </LinearLayout>
-    </ScrollView>
+
+        <EditText
+            android:id="@+id/editNoTelepon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="No Telepon"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alamat"
+            android:importantForAutofill="no"
+            android:inputType="textPostalAddress"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editNoRombongan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="No Rombongan Jamaah"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/editNamaKetua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Ketua Rombongan"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Gender Selection -->
+        <RadioGroup
+            android:id="@+id/radioGroupGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+
+            <RadioButton
+                android:id="@+id/radioLaki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/laki_laki" />
+
+            <RadioButton
+                android:id="@+id/radioPerempuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/perempuan"
+                android:layout_marginStart="20dp"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/daftar"
+            android:padding="10dp"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:id="@+id/buttonGoogleSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="@string/daftar_dengan_google"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/buttonKembali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/kembali"
+            android:padding="10dp"
+            android:backgroundTint="@color/gray"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+
 </FrameLayout>

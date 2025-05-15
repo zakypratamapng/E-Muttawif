@@ -3,4 +3,19 @@
     <string name="muhammadiyah">muhammadiyah</string>
     <string name="default_web_client_id">YOUR_CLIENT_ID.apps.googleusercontent.com</string>
     <string name="todo">TODO</string>
+    <string name="niat_haji">Niat Haji</string>
+    <string name="kembali">Kembali</string>
+    <string name="daftar_dengan_google">Daftar dengan Google</string>
+    <string name="daftar">Daftar</string>
+    <string name="perempuan">Perempuan</string>
+    <string name="laki_laki">Laki-laki</string>
+    <string name="daftar_akun">Daftar Akun</string>
+    <string name="no_rombongan">No Rombongan:</string>
+    <string name="nama">Nama:</string>
+    <string name="no_telepon">No Telepon:</string>
+    <string name="alamat">Alamat:</string>
+    <string name="profile_photo">Profile Photo</string>
+    <string name="uid">UID:</string>
+    <string name="nama_ketua_rombongan">Nama Ketua Rombongan:</string>
+    <string name="jenis_kelamin">Jenis Kelamin:</string>
 </resources>
