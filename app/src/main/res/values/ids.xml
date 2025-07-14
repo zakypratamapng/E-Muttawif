@@ -7,4 +7,18 @@
     <item name="menuTataUmroh" type="id" />
     <item name="menuTataHaji" type="id" />
     <item name="menuGrid" type="id" />
+    <item name="itemContainer" type="id" />
+    <item name="containerList" type="id" />
+    <item name="button2" type="id" />
+    <item name="button1" type="id" />
+    <item name="button3" type="id" />
+    <item name="button4" type="id" />
+    <item name="button5" type="id" />
+    <item name="button6" type="id" />
+    <item name="button7" type="id" />
+    <item name="button9" type="id" />
+    <item name="button10" type="id" />
+    <item name="button11" type="id" />
+    <item name="button12" type="id" />
+    <item name="button8" type="id" />
 </resources>

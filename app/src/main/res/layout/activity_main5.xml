@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background -->
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:alpha="0.4"
+        android:src="@drawable/backgroundmuttowif" />
+
+    <!-- Konten Utama -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Toolbar -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E-muttawif"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:padding="8dp"
+            android:background="#6200EE" />
+
+        <!-- Grid Menu -->
+        <GridLayout
+            android:id="@+id/menuGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:columnCount="3"
+            android:rowCount="3"
+            android:alignmentMode="alignMargins"
+            android:useDefaultMargins="true">
+
+            <!-- Menu 1: Persiapan Haji -->
+            <LinearLayout
+                android:id="@+id/menuPersiapanHaji"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:background="@android:color/white"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_compass" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Persiapan Haji"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Menu 2: Fiqih Umrah -->
+            <LinearLayout
+                android:id="@+id/menuFiqihUmrah"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:background="@android:color/white"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_agenda" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fiqih Umrah"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Menu 3: Fiqih Haji -->
+            <LinearLayout
+                android:id="@+id/menuFiqihHaji"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:background="@android:color/white"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_info_details" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fiqih Haji"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Menu 4: Dzikir dan Doa -->
+            <LinearLayout
+                android:id="@+id/menuDzikirDoa"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:background="@android:color/white"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_my_calendar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dzikir dan Doa"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Menu 5: Tata Cara Umroh -->
+            <LinearLayout
+                android:id="@+id/menuTataUmroh"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:background="@android:color/white"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_directions" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tata Cara Umroh"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Menu 6: Tata Cara Haji -->
+            <LinearLayout
+                android:id="@+id/menuTataHaji"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp"
+                android:background="@android:color/white"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_day" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tata Cara Haji"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </GridLayout>
+
+        <!-- Spacer agar tombol tetap di bawah -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <!-- Tombol mulai thawaf wada di atas tombol kembali, di tengah -->
+    <Button
+        android:id="@+id/btnThawafWada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mulai Thawaf Wada"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="260dp"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+    <ImageButton
+        android:id="@+id/buttonBack"
+        android:layout_width="95dp"
+        android:layout_height="94dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/todo"
+        android:scaleType="centerInside"
+        android:src="@android:drawable/ic_menu_revert" />
+</RelativeLayout>

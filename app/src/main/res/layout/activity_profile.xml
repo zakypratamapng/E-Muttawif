@@ -2,193 +2,125 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.2"
-        android:importantForAccessibility="no"
-        android:scaleType="centerCrop"
         android:src="@drawable/backgroundmuttowif"
-        tools:ignore="ImageContrastCheck" />
+        android:scaleType="centerCrop"
+        android:alpha="0.2"
+        tools:ignore="ContentDescription" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp"
-        android:gravity="start">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageProfile"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_person"
-            android:scaleType="centerCrop"
-            android:background="@drawable/circle_bg"
-            android:clickable="true"
-            android:focusable="true"
-            android:contentDescription="@string/profile_photo"
-            android:layout_marginBottom="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UID:"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/textUid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="16dp"
-            tools:ignore="HardcodedText" />
+            <!-- HAPUS: Foto Profil dan Tombol Pilih Foto -->
+            <!--
+            <ImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_account_circle"
+                android:background="@drawable/circle_white"
+                android:scaleType="centerCrop"
+                android:contentDescription="Foto Profil"
+                android:padding="8dp"
+                android:elevation="4dp"
+                android:layout_marginBottom="8dp"
+                tools:ignore="HardcodedText" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama:"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/textNama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="16dp"
-            tools:ignore="HardcodedText" />
+            <Button
+                android:id="@+id/btnPilihFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Foto"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                tools:ignore="HardcodedText" />
+            -->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No Telepon:"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/textNoTelepon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="16dp"
-            tools:ignore="HardcodedText" />
+            <EditText
+                android:id="@+id/editNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="Nama"
+                android:minHeight="48dp"
+                tools:ignore="HardcodedText,TextFields" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alamat:"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/textAlamat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="16dp"
-            tools:ignore="HardcodedText" />
+            <EditText
+                android:id="@+id/editNoTelepon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="No Telepon"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                tools:ignore="HardcodedText" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No Rombongan:"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/textNoRombongan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="16dp"
-            tools:ignore="HardcodedText" />
+            <EditText
+                android:id="@+id/editAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="Alamat"
+                android:minHeight="48dp"
+                tools:ignore="HardcodedText,TextFields" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama Ketua Rombongan:"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/textNamaKetua"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="16dp"
-            tools:ignore="HardcodedText" />
+            <EditText
+                android:id="@+id/editNoRombongan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="No Rombongan"
+                android:minHeight="48dp"
+                tools:ignore="HardcodedText,TextFields" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Jenis Kelamin:"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            tools:ignore="HardcodedText" />
-        <TextView
-            android:id="@+id/textJenisKelamin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="16dp"
-            tools:ignore="HardcodedText" />
+            <EditText
+                android:id="@+id/editNamaKetua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="Nama Ketua Rombongan"
+                android:minHeight="48dp"
+                tools:ignore="HardcodedText,TextFields" />
 
-        <Button
-            android:id="@+id/buttonKembali"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kembali"
-            android:padding="10dp"
-            android:layout_marginTop="16dp"
-            tools:ignore="HardcodedText" />
-    </LinearLayout>
+            <RadioGroup
+                android:id="@+id/radioGroupGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+                <RadioButton
+                    android:id="@+id/radioLaki"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Laki-laki"
+                    tools:ignore="HardcodedText" />
+                <RadioButton
+                    android:id="@+id/radioPerempuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Perempuan"
+                    tools:ignore="HardcodedText" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/buttonSimpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Simpan"
+                android:layout_marginTop="24dp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>
-<!-- Compare this snippet from app/src/main/res/layout/activity_main2.xml: -->
-<!-- <?xml version="1.0" encoding="utf-8"?> -->
-<!-- <GridLayout xmlns:android="http://schemas.android.com/apk/res/android" -->
-<!--     android:layout_width="match_parent" -->
-<!--     android:layout_height="match_parent" -->
-<!--     android:orientation="vertical" -->
-<!--     android:padding="16dp"> -->
-<!--  -->
-<!--     <LinearLayout -->
-<!--         android:layout_width="match_parent" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:orientation="vertical"> -->
-<!--         <TextView -->
-<!--             android:id="@+id/textTitle" -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->

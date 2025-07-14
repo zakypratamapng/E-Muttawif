@@ -1,9 +1,15 @@
 package com.example.muttawif;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.InputType;
 import android.util.Log;
 import android.util.Patterns;
@@ -13,8 +19,12 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,16 +36,23 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class Signup extends AppCompatActivity {
 
     private EditText editNama, editEmail, editPassword, editNoTelepon, editAlamat, editNoRombongan, editNamaKetua;
-    private ImageView passwordToggle;
+    private ImageView passwordToggle, imgProfileSignup;
     private RadioGroup radioGroupGender;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private GoogleSignInClient googleSignInClient;
     private boolean isPasswordVisible = false;
+    private Button btnPilihFotoSignup;
+    private Uri selectedImageUri;
+    private String profileImageUrl = null;
+    private static final int PICK_IMAGE_REQUEST = 201;
+    private static final int PERMISSION_REQUEST_READ_EXTERNAL_STORAGE = 202;
 
     private static final String TAG = "SignupActivity";
 
@@ -57,6 +74,8 @@ public class Signup extends AppCompatActivity {
         Button buttonKembali = findViewById(R.id.buttonKembali);
         passwordToggle = findViewById(R.id.passwordToggle);
         radioGroupGender = findViewById(R.id.radioGroupGender);
+        imgProfileSignup = findViewById(R.id.imgProfileSignup);
+        btnPilihFotoSignup = findViewById(R.id.btnPilihFotoSignup);
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
@@ -71,6 +90,8 @@ public class Signup extends AppCompatActivity {
         buttonGoogleSignup.setOnClickListener(v -> signInWithGoogle());
         buttonKembali.setOnClickListener(v -> finish());
         passwordToggle.setOnClickListener(v -> togglePasswordVisibility());
+        btnPilihFotoSignup.setOnClickListener(v -> checkGalleryPermissionAndPickImage());
+        imgProfileSignup.setOnClickListener(v -> checkGalleryPermissionAndPickImage());
     }
 
     private void checkEmailBeforeSignup() {
@@ -129,40 +150,71 @@ public class Signup extends AppCompatActivity {
             return;
         }
 
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Menyimpan data...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                         if (user != null) {
                             String uid = user.getUid();
-                            User newUser = new User(uid, nama, email, noTelepon, alamat, noRombongan, namaKetua, jenisKelamin);
-                            databaseReference.child(uid).setValue(newUser)
-                                    .addOnCompleteListener(databaseTask -> {
-                                        if (databaseTask.isSuccessful()) {
-                                            // Save all info to SharedPreferences
-                                            SharedPreferences prefs = getSharedPreferences("UserProfile", MODE_PRIVATE);
-                                            SharedPreferences.Editor editor = prefs.edit();
-                                            editor.putString("nama", nama);
-                                            editor.putString("email", email);
-                                            editor.putString("noTelepon", noTelepon);
-                                            editor.putString("alamat", alamat);
-                                            editor.putString("noRombongan", noRombongan);
-                                            editor.putString("namaKetua", namaKetua);
-                                            editor.putString("jenisKelamin", jenisKelamin);
-                                            editor.apply();
-
-                                            Toast.makeText(Signup.this, "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(Signup.this, login.class));
-                                            finish();
-                                        } else {
-                                            Log.e(TAG, "Database error: ", databaseTask.getException());
-                                            Toast.makeText(Signup.this, "Gagal menyimpan data ke database", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                            if (selectedImageUri != null) {
+                                // Simpan dengan nama unik: profile_images/UID.jpg (menimpa jika ada)
+                                String fileName = "profile_images/" + uid + ".jpg";
+                                StorageReference storageRef = FirebaseStorage.getInstance().getReference().child(fileName);
+                                storageRef.putFile(selectedImageUri)
+                                        .addOnSuccessListener(taskSnapshot -> storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                                            profileImageUrl = uri.toString();
+                                            saveUserToDatabase(uid, nama, email, noTelepon, alamat, noRombongan, namaKetua, jenisKelamin, profileImageUrl, progressDialog);
+                                        }).addOnFailureListener(e -> {
+                                            progressDialog.dismiss();
+                                            Log.e(TAG, "Gagal mendapatkan URL foto: " + e.getMessage(), e);
+                                            Toast.makeText(this, "Gagal mendapatkan URL foto", Toast.LENGTH_SHORT).show();
+                                        }))
+                                        .addOnFailureListener(e -> {
+                                            progressDialog.dismiss();
+                                            Log.e(TAG, "Gagal mengunggah foto: " + e.getMessage(), e);
+                                            Toast.makeText(this, "Gagal mengunggah foto", Toast.LENGTH_SHORT).show();
+                                        });
+                            } else {
+                                saveUserToDatabase(uid, nama, email, noTelepon, alamat, noRombongan, namaKetua, jenisKelamin, null, progressDialog);
+                            }
                         }
                     } else {
+                        progressDialog.dismiss();
                         Log.e(TAG, "Signup error: ", task.getException());
                         Toast.makeText(Signup.this, "Pendaftaran gagal: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void saveUserToDatabase(String uid, String nama, String email, String noTelepon, String alamat, String noRombongan, String namaKetua, String jenisKelamin, String profileImageUrl, ProgressDialog progressDialog) {
+        User newUser = new User(uid, nama, email, noTelepon, alamat, noRombongan, namaKetua, jenisKelamin, profileImageUrl);
+        databaseReference.child(uid).setValue(newUser)
+                .addOnCompleteListener(databaseTask -> {
+                    progressDialog.dismiss();
+                    if (databaseTask.isSuccessful()) {
+                        SharedPreferences prefs = getSharedPreferences("UserProfile", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString("nama", nama);
+                        editor.putString("email", email);
+                        editor.putString("noTelepon", noTelepon);
+                        editor.putString("alamat", alamat);
+                        editor.putString("noRombongan", noRombongan);
+                        editor.putString("namaKetua", namaKetua);
+                        editor.putString("jenisKelamin", jenisKelamin);
+                        if (profileImageUrl != null) editor.putString("profileImageUrl", profileImageUrl);
+                        editor.apply();
+
+                        Toast.makeText(Signup.this, "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Signup.this, login.class));
+                        finish();
+                    } else {
+                        Log.e(TAG, "Database error: ", databaseTask.getException());
+                        Toast.makeText(Signup.this, "Gagal menyimpan data ke database", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -172,10 +224,70 @@ public class Signup extends AppCompatActivity {
         startActivityForResult(signInIntent, 9001);
     }
 
+    private void checkGalleryPermissionAndPickImage() {
+        if (Build.VERSION.SDK_INT >= 34) { // Android 14+
+            if (ContextCompat.checkSelfPermission(this, "android.permission.READ_MEDIA_VISUAL_USER_SELECTED")
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{"android.permission.READ_MEDIA_VISUAL_USER_SELECTED"},
+                        PERMISSION_REQUEST_READ_EXTERNAL_STORAGE);
+            } else {
+                openGallery();
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_MEDIA_IMAGES},
+                        PERMISSION_REQUEST_READ_EXTERNAL_STORAGE);
+            } else {
+                openGallery();
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        PERMISSION_REQUEST_READ_EXTERNAL_STORAGE);
+            } else {
+                openGallery();
+            }
+        } else {
+            openGallery();
+        }
+    }
+
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_READ_EXTERNAL_STORAGE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openGallery();
+            } else {
+                Toast.makeText(this, "Izin akses galeri diperlukan untuk memilih foto.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 9001) {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            selectedImageUri = data.getData();
+            Glide.with(this)
+                    .load(selectedImageUri)
+                    .circleCrop()
+                    .placeholder(R.drawable.ic_account_circle)
+                    .error(R.drawable.ic_account_circle)
+                    .into(imgProfileSignup);
+        } else if (requestCode == 9001) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult();
