@@ -1,6 +1,7 @@
 package com.example.muttawif;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,8 +26,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -169,14 +172,71 @@ public class login extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                         if (user != null) {
-                            Toast.makeText(this, "Login dengan Google berhasil", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(this, dashboard.class));
-                            finish();
+                            handleGoogleLoginSuccess(user);
                         }
                     } else {
                         Toast.makeText(this, "Autentikasi Google gagal", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void handleGoogleLoginSuccess(FirebaseUser firebaseUser) {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Memuat data profil...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String uid = firebaseUser.getUid();
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                progressDialog.dismiss();
+                if (snapshot.exists()) {
+                    User user = snapshot.getValue(User.class);
+                    if (user != null
+                            && user.getNama() != null && !user.getNama().isEmpty()
+                            && user.getNoTelepon() != null && !user.getNoTelepon().isEmpty()
+                            && user.getAlamat() != null && !user.getAlamat().isEmpty()) {
+                        // Data profil lengkap, langsung ke halaman profil utama
+                        Intent intent = new Intent(login.this, ProfileInfoActivity.class);
+                        intent.putExtra("uid", user.getUid());
+                        intent.putExtra("nama", user.getNama());
+                        intent.putExtra("email", user.getEmail());
+                        intent.putExtra("noTelepon", user.getNoTelepon());
+                        intent.putExtra("alamat", user.getAlamat());
+                        intent.putExtra("noRombongan", user.getNoRombongan());
+                        intent.putExtra("namaKetua", user.getNamaKetua());
+                        intent.putExtra("jenisKelamin", user.getJenisKelamin());
+                        intent.putExtra("fromGoogleLogin", true); // <--- Tambahkan ini
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        // Data belum lengkap, arahkan ke pengisian profil
+                        Intent intent = new Intent(login.this, ProfileActivity.class);
+                        intent.putExtra("uid", uid);
+                        intent.putExtra("email", firebaseUser.getEmail());
+                        intent.putExtra("nama", firebaseUser.getDisplayName());
+                        startActivity(intent);
+                        finish();
+                    }
+                } else {
+                    // Data belum ada, arahkan ke pengisian profil
+                    Intent intent = new Intent(login.this, ProfileActivity.class);
+                    intent.putExtra("uid", uid);
+                    intent.putExtra("email", firebaseUser.getEmail());
+                    intent.putExtra("nama", firebaseUser.getDisplayName());
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                progressDialog.dismiss();
+                Toast.makeText(login.this, "Gagal memuat data profil: " + error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void togglePasswordVisibility() {

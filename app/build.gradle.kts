@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.google.firebase.firebase.perf)
 }
 
 android {
@@ -55,18 +56,24 @@ dependencies {
         implementation (libs.material.v190)
         implementation (libs.constraintlayout)
 
+
         // Other dependencies you might need
         implementation (libs.lifecycle.livedata.ktx)
         implementation (libs.lifecycle.viewmodel.ktx)
+    implementation(platform(libs.google.firebase.bom))
 
-        implementation ("com.google.android.gms:play-services-auth:21.0.0") // versi terbaru
-        implementation ("com.google.android.gms:play-services-identity:18.0.1")
+
+    implementation (libs.play.services.auth.v2100) // versi terbaru
+        implementation (libs.play.services.identity)
+        implementation (libs.firebase.perf)
+    implementation (libs.glide)
 
     // Google Sign-In
     implementation(libs.gms.play.services.auth)
     implementation(libs.credentials)
     implementation(libs.credentials.play.services.auth)
     implementation(libs.googleid)
+    implementation(libs.firebase.perf)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

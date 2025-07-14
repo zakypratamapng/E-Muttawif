@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:alpha="0.4"
+        android:src="@drawable/backgroundmuttowif" />
+
+    <!-- Tombol kembali, pastikan di luar ScrollView -->
+    <ImageButton
+        android:id="@id/btnBack"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Kembali"
+        android:src="@android:drawable/ic_menu_revert"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <!-- Judul Persiapan Haji -->
+    <TextView
+        android:id="@+id/tvJudul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Persiapan Haji"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#222222"
+        android:layout_below="@id/btnBack"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Container -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvJudul"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:alpha="0.9"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keutamaan Haji"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jama'ah haji tamu Allah"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Segeralah jadi tamu Allah"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bersabarlah dalam ibadah"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ikhlas menjalankan ibadah"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Meneladani Nabi"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jangan berdebat"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hindari maksiat agar mabrur"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bertaubat sebelum berhaji"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gunakan harta yang halal"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pilih teman perjalanan baik"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pahami hakikat talbiyah"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

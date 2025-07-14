@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/bgImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:alpha="0.4"
+            android:src="@drawable/backgroundmuttowif" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:layout_gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/fiqihUmrahTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="Fiqih Umroh"
+                        tools:text="Fiqih Umroh" />
+
+                    <TextView
+                        android:id="@+id/fiqihUmrahText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:lineSpacingExtra="6dp"
+                        android:textIsSelectable="true"
+                        android:text="FIQIH UMRAH – PENJELASAN LENGKAP&#10;&#10;1. &#9733;Ihram di Miqot&#9733;&#10;   Jamaah wajib memulai niat umrah dari miqot yang telah ditentukan tergantung dari arah kedatangan. Sebelum ihram, dianjurkan untuk mandi, memakai wangi-wangian (khusus laki-laki), dan mengenakan pakaian ihram yaitu dua lembar kain putih tanpa jahitan (untuk laki-laki). Lalu mengucapkan niat umrah: &quot;Labbaik Allahumma Umrah.&quot;&#10;&#10;2. &#9733;Thawaf di Ka&#39;bah&#9733;&#10;   Setelah tiba di Masjidil Haram, jamaah melakukan thawaf sebanyak 7 putaran mengelilingi Ka&#39;bah dengan memulai dari Hajar Aswad dan berakhir di titik yang sama. Thawaf dilakukan berlawanan arah jarum jam dan disertai dengan dzikir serta doa. Dianjurkan untuk mencium atau memberi isyarat ke Hajar Aswad jika memungkinkan.&#10;&#10;3. &#9733;Sholat di Maqam Ibrahim&#9733;&#10;   Setelah thawaf, disunnahkan untuk sholat 2 rakaat di belakang Maqam Ibrahim. Jika terlalu padat, boleh di tempat lain di area Masjidil Haram. Bacaan surah yang dianjurkan setelah Al-Fatihah adalah Al-Kafirun dan Al-Ikhlas.&#10;&#10;4. &#9733;Minum Air Zamzam&#9733;&#10;   Setelah sholat, jamaah disunnahkan untuk minum air zamzam sambil berdoa sesuai kebutuhan. Disunnahkan berdiri saat minum dan menghadap kiblat.&#10;&#10;5. &#9733;Sa’i antara Shafa dan Marwah&#9733;&#10;   Setelah minum zamzam, jamaah menuju bukit Shafa untuk memulai sa’i. Dimulai dari Shafa dan berakhir di Marwah, dilakukan sebanyak 7 kali (1 perjalanan dari Shafa ke Marwah dihitung 1 kali). Selama sa’i disunnahkan membaca doa dan dzikir, serta berlari kecil di area lampu hijau untuk laki-laki.&#10;&#10;6. &#9733;Tahallul (Cukur atau Potong Rambut)&#9733;&#10;   Setelah selesai sa’i, jamaah melakukan tahallul yaitu mencukur habis rambut kepala (gundul) atau memotong sedikit (minimal 3 helai rambut) bagi laki-laki. Wanita cukup memotong rambut sepanjang satu ruas jari. Setelah tahallul, larangan ihram menjadi gugur dan umrah pun selesai.&#10;&#10;Catatan Tambahan:&#10;- Umrah dapat dilakukan dalam waktu singkat (beberapa jam saja)&#10;- Pastikan menjaga niat, adab, dan kesabaran selama menjalankan ibadah.&#10;- Disarankan memperbanyak doa, dzikir, dan membaca Al-Quran selama di tanah suci.&#10;&#10;Semoga ibadah umrah Anda diterima oleh Allah dan menjadi umrah yang mabrurah. Aamiin." />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/backIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|start"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="#00FFFFFF"
+            android:contentDescription="Kembali"
+            app:tint="#222222" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,9 +1,9 @@
 package com.example.muttawif;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +20,6 @@ public class MainActivity2 extends AppCompatActivity {
     private static final String FIREBASE_BUCKET = "gs://muttawif-data.appspot.com";
     private static final String DOA_FOLDER = "doa/";
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,17 +27,31 @@ public class MainActivity2 extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
 
-        // Set tombol-tombol agar saat diklik memunculkan popup doa
+        // Haji & Umrah buttons (no duplicates)
         setupButton(R.id.buttonNiatHaji, "niat_haji.txt");
         setupButton(R.id.buttonNiatHajiQiran, "niat_haji_qiran.txt");
+        setupButton(R.id.buttonNiatUmrah, "niat_umrah.txt");
+        setupButton(R.id.buttonTalbiyah, "talbiyah.txt");
         setupButton(R.id.buttonDoaSelesaiIhram, "doa_selesai_berihram.txt");
-        setupButton(R.id.buttonDoaTalbiyah, "doa_talbiyah.txt");
         setupButton(R.id.buttonDoaMasukMakkah, "doa_masuk_makkah.txt");
-        setupButton(R.id.buttonDoaMasjidilHaram, "doa_masuk_masjidil_haram.txt");
-        setupButton(R.id.buttonDoaLihatKaabah, "doa_lihat_kaabah.txt");
+        setupButton(R.id.buttonMasukMasjidilHaram, "doa_masuk_masjidil_haram.txt");
+        setupButton(R.id.buttonLihatKaabah, "doa_lihat_kaabah.txt");
+        setupButton(R.id.buttonSebelumThawaf, "doa_sebelum_thawaf.txt");
+        setupButton(R.id.buttonHajarAswad, "thawaf/hajar_aswad.txt");
+        setupButton(R.id.buttonPutaranThawaf, "doa_putaran_thawaf.txt");
+        setupButton(R.id.buttonRukunYamani, "thawaf/rukun_yamani.txt");
+        setupButton(R.id.buttonAntaraRukunYamaniHajarAswad, "doa_antara_rukun_yamani_hajar_aswad.txt");
+        setupButton(R.id.buttonSelesaiThawaf, "thawaf/selesai_thawaf.txt");
+        setupButton(R.id.buttonMaqamIbrahim, "thawaf/maqam_ibrahim.txt");
+        setupButton(R.id.buttonAirZamzam, "doa_air_zamzam.txt");
+        setupButton(R.id.buttonNaikShafa, "sai/bukit.txt");
+        setupButton(R.id.buttonSaiShafaMarwah, "doa_sai_shafa_marwah.txt");
+        setupButton(R.id.buttonNaikMarwah, "sai/bukit.txt");
+        setupButton(R.id.buttonLintasanSai, "doa_lintasan_sai.txt");
+        setupButton(R.id.buttonSelesaiSai, "doa_selesai_sai.txt");
+        setupButton(R.id.buttonTahallul, "doa_tahallul.txt");
         setupButton(R.id.buttonDoaTawaf, "doa_thawaf.txt");
         setupButton(R.id.buttonDoaSai, "doa_sai.txt");
-        setupButton(R.id.buttonDoaGuntingRambut, "doa_gunting_rambut.txt");
         setupButton(R.id.buttonDoaMasukArafah, "doa_masuk_arafah.txt");
         setupButton(R.id.buttonDoaWukuf, "doa_wukuf.txt");
         setupButton(R.id.buttonDoaSampaiMuzdalifah, "doa_sampai_muzdalifah.txt");
@@ -48,13 +61,15 @@ public class MainActivity2 extends AppCompatActivity {
         setupButton(R.id.buttonDoaMasukMasjidNabawi, "doa_masuk_masjid_nabawi.txt");
         setupButton(R.id.buttonDoaPulangHaji, "doa_pulang_haji.txt");
 
-        // Tombol Back
-        findViewById(R.id.buttonBack).setOnClickListener(v -> finish());
+        ImageButton backBtn = findViewById(R.id.buttonBack);
+        backBtn.setOnClickListener(v -> finish());
     }
 
     private void setupButton(int buttonId, String fileName) {
         Button button = findViewById(buttonId);
-        button.setOnClickListener(v -> showDoaPopup(fileName));
+        if (button != null) {
+            button.setOnClickListener(v -> showDoaPopup(fileName));
+        }
     }
 
     private void showDoaPopup(String fileName) {
@@ -67,23 +82,23 @@ public class MainActivity2 extends AppCompatActivity {
             storageRef.getFile(localFile).addOnSuccessListener(taskSnapshot -> {
                 String doaText = readFile(localFile);
                 showPopup(doaText);
-            }).addOnFailureListener(e -> {
-                Toast.makeText(MainActivity2.this, "Gagal mengambil doa: " + fileName, Toast.LENGTH_LONG).show();
-            });
+            }).addOnFailureListener(e -> Toast.makeText(MainActivity2.this, "Failed to fetch doa: " + fileName, Toast.LENGTH_LONG).show());
 
         } catch (IOException e) {
-            Toast.makeText(this, "Gagal membaca file: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Failed to read file: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     private String readFile(File file) {
         try (FileInputStream fis = new FileInputStream(file)) {
             byte[] data = new byte[(int) file.length()];
-            fis.read(data);
+            int read = fis.read(data);
+            if (read != data.length) {
+                return "Failed to read doa (incomplete read).";
+            }
             return new String(data);
         } catch (IOException e) {
-            e.printStackTrace();
-            return "Gagal membaca doa.";
+            return "Failed to read doa.";
         }
     }
 
@@ -98,7 +113,7 @@ public class MainActivity2 extends AppCompatActivity {
         scrollView.addView(textView);
 
         builder.setView(scrollView)
-                .setPositiveButton("Tutup", (dialog, which) -> dialog.dismiss())
+                .setPositiveButton("Close", (dialog, which) -> dialog.dismiss())
                 .setTitle("Doa");
 
         AlertDialog dialog = builder.create();

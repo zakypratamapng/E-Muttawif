@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +9,8 @@
         android:layout_height="match_parent"
         android:src="@drawable/backgroundmuttowif"
         android:scaleType="centerCrop"
-        android:alpha="0.2" />
+        android:alpha="0.2"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +25,9 @@
             android:layout_height="60dp"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:padding="10dp" />
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="Autofill,HardcodedText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,14 +42,17 @@
                 android:layout_height="60dp"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:padding="10dp" />
+                android:minHeight="48dp"
+                android:padding="10dp"
+                tools:ignore="Autofill,HardcodedText" />
 
             <ImageView
                 android:id="@+id/passwordToggle"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/ic_visibility_off"
-                android:padding="10dp" />
+                android:padding="10dp"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
 
         <Button
@@ -53,27 +60,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login"
-            android:backgroundTint="@color/blue"
-            android:textColor="@android:color/white"
-            android:padding="10dp" />
+            android:backgroundTint="#1976D2"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/buttonGoogleLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login dengan Google"
-            android:backgroundTint="@color/red"
-            android:textColor="@android:color/white"
-            android:padding="10dp" />
+            android:backgroundTint="#D32F2F"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/buttonGotoSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Buat Akun Baru"
-            android:backgroundTint="@color/blue"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="10dp" />
+            android:backgroundTint="#1976D2"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText" />
 
         <ProgressBar
             android:id="@+id/progressBar"

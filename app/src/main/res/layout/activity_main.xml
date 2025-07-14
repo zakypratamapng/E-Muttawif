@@ -17,98 +17,159 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <ImageButton
-            android:id="@+id/buttonProfile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="start|top"
-            android:background="@null"
-            android:elevation="10dp"
-            android:src="@drawable/ic_profile"
-            tools:ignore="SpeakableTextPresentCheck" />
+        <!-- Baris profile dan info user -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:layout_marginBottom="0dp"
+            android:background="#F5F5F5">
 
+            <ImageButton
+                android:id="@+id/buttonProfile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:elevation="10dp"
+                android:src="@drawable/ic_profile"
+                tools:ignore="SpeakableTextPresentCheck" />
 
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Labbaikallahumma Labbaik, Labbaika laa syariika laka labbaik"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:paddingBottom="4dp"
+            <!-- Layer putih di belakang nama dan no rombongan, tinggi sama dengan tombol profile -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:gravity="center_vertical"
+                android:elevation="2dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="0dp">
+
+                <TextView
+                    android:id="@+id/tvDashboardNama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama User"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvDashboardNoRombongan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No. Rombongan"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Mulai layer persegi besar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="2dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:backgroundTintMode="src_in"
+            android:backgroundTint="#FFFFFF"
+            android:clipToOutline="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="#FFFFFF"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Labbaikallahumma Labbaik, Labbaika laa syariika laka labbaik"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="4dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="4dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aku datang memenuhi panggilan-Mu ya Allah, aku datang memenuhi panggilan-Mu, tiada sekutu bagi-Mu, aku datang memenuhi panggilan-Mu"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Referensi Doa Haji"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+        <!-- Akhir layer persegi besar -->
+
+        <!-- ...existing code untuk tombol... -->
+        <Button
+            android:id="@+id/buttonMuhammadiyah"
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:backgroundTint="#1976D2"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Muhammadiyah"
+            android:textColor="#FFFFFF"
             tools:ignore="HardcodedText" />
 
-    <!-- Talbiyah (Arab) -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:paddingBottom="4dp"
-        tools:ignore="HardcodedText" />
-
-    <!-- Terjemahan Talbiyah -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aku datang memenuhi panggilan-Mu ya Allah, aku datang memenuhi panggilan-Mu, tiada sekutu bagi-Mu, aku datang memenuhi panggilan-Mu"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:paddingBottom="20dp"
-        tools:ignore="HardcodedText" />
-
-    <!-- Judul Pemilihan Referensi Doa -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pilih Referensi Doa Haji"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:paddingBottom="20dp"
-        tools:ignore="HardcodedText" />
-
-    <!-- Tombol Muhammadiyah -->
-    <Button
-        android:id="@+id/buttonMuhammadiyah"
-        android:layout_width="match_parent"
-        android:layout_height="77dp"
-        android:backgroundTint="@color/blue"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:text="Muhammadiyah"
-        android:textColor="@android:color/white"
-        tools:ignore="HardcodedText" />
-
-    <!-- Tombol Nahdlatul Ulama -->
-    <Button
-        android:id="@+id/buttonNU"
-        android:layout_width="match_parent"
-        android:layout_height="83dp"
-        android:backgroundTint="@color/green"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:text="Nahdlatul Ulama (NU)"
-        android:textColor="@android:color/white"
-        tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/buttonNU"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:backgroundTint="#388E3C"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Nahdlatul Ulama (NU)"
+            android:textColor="#FFFFFF"
+            tools:ignore="HardcodedText" />
 
         <ImageButton
             android:id="@+id/buttonLogout"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_gravity="end|bottom"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="100dp"
             android:background="@null"
             android:elevation="10dp"
             android:src="@drawable/ic_logout"
             tools:ignore="SpeakableTextPresentCheck" />
-
 
     </LinearLayout>
 

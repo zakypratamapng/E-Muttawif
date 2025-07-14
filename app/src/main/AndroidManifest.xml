@@ -2,12 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- Tambahkan permission galeri untuk Android < 13 -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" /> <!-- Tambahkan permission galeri untuk Android 13+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- Tambahan permission Android 14+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +30,36 @@
         android:theme="@style/Theme.Muttawif"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity5"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TataHajiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TataUmrohActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QiranActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IfradActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TamattuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PersiapanHajiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity4"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity3"
+            android:exported="false" />
+        <activity
             android:name=".DoaPopupActivity"
             android:exported="false" />
         <activity
@@ -28,7 +68,7 @@
 
         <service
             android:name=".LocationService"
-            android:enabled="true"/>
+            android:enabled="true" />
 
         <activity
             android:name=".ProfileActivity"
